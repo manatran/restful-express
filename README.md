@@ -2,6 +2,10 @@
 
 This project contains complete CRUD functionality using Express.js and mongoDB with Mongoose.
 
+## Purpose
+
+This repository is an exercise to learn development with Node.js and some of its modules. Among these modules are Express.js and Mongoose. It is also an excellent opportunity to get to know MongoDB in the back-end and Angular.js in the front-end. The contents of this repository are loosely based on a tutorial by [Traversy Media](https://youtu.be/eB9Fq9I5ocs) on YouTube.
+
 ## Installation and setup
 
 Clone the repository
