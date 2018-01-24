@@ -1,13 +1,16 @@
+//Import node modules
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+//Import models
 Student = require('./models/students');
 Project = require('./models/projects');
 
 var app = express();
-
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
+
+
 
 //Connect to Mongoose
 mongoose.connect('mongodb://localhost/restful');
@@ -30,7 +33,18 @@ app.get('/api/students', function (req, res) {
 
     });
 });
-//Add Student
+//Get Students By Id
+app.get('/api/students/:_id', function (req, res) {
+    Student.getStudentsById(req.params._id, function (error, student) {
+        if(error){
+            throw error;
+        }else{
+            res.json(student);
+        }
+
+    });
+});
+//Create Student
 app.post('/api/students', function (req, res) {
     var student = req.body;
     Student.addStudent(student, function (error, student) {
@@ -55,7 +69,7 @@ app.put('/api/students/:_id', function (req, res) {
 
     });
 });
-//Remove Student
+//Delete Student
 app.delete('/api/students/:_id', function (req, res) {
     var id = req.params._id;
     Student.deleteStudent(id, function (error, student) {
@@ -68,7 +82,9 @@ app.delete('/api/students/:_id', function (req, res) {
     });
 });
 
-//get Projects
+
+
+//Get Projects
 app.get('/api/projects', function (req, res) {
     Project.getProjects(function (error, projects) {
         if(error){
@@ -79,7 +95,7 @@ app.get('/api/projects', function (req, res) {
 
     });
 });
-//get Projects By Id
+//Get Projects By Id
 app.get('/api/projects/:_id', function (req, res) {
     Project.getProjectsById(req.params._id, function (error, project) {
         if(error){
@@ -90,7 +106,7 @@ app.get('/api/projects/:_id', function (req, res) {
 
     });
 });
-//Add Project
+//Create Project
 app.post('/api/projects', function (req, res) {
     var project = req.body;
     Project.addProject(project, function (error, project) {
@@ -115,7 +131,7 @@ app.put('/api/projects/:_id', function (req, res) {
 
     });
 });
-//Remove Project
+//Delete Project
 app.delete('/api/projects/:_id', function (req, res) {
     var id = req.params._id;
     Project.deleteProject(id, function (error, project) {

@@ -6,6 +6,10 @@ var studentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    first_name:{
+        type: String,
+        required: true
+    },
     create_date:{
         type:Date,
         default: Date.now
@@ -20,6 +24,11 @@ module.exports.getStudents = function (callback, limit) {
     Student.find(callback).limit(limit);
 };
 
+//Get Students by Id
+module.exports.getStudentsById = function (id,  callback) {
+    Student.findById(id, callback);
+};
+
 //Add Student
 module.exports.addStudent = function (student, callback) {
     Student.create(student, callback);
@@ -29,7 +38,8 @@ module.exports.addStudent = function (student, callback) {
 module.exports.updateStudent = function (id, student, options, callback) {
     var query = {_id: id};
     var update = {
-        name: student.name
+        name: student.name,
+        first_name: student.first_name
     };
     Student.findOneAndUpdate(query, update, options, callback);
 };

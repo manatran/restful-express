@@ -1,0 +1,14 @@
+<div class="row" ng-init="getStudent()">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{student.first_name}} {{student.name}}</h1>
+            <p class="lead">{{student._id}}</p>
+            <p>{{student.create_date | date:'medium'}}</p>
+            <div class="btn-group">
+                <a href="#!/students/edit/{{student._id}}" class="btn btn-outline-primary btn-sm" role="button">Edit Student</a>
+                <a href="#" ng-click="removeStudent(student._id)" class="btn btn-outline-danger btn-sm" role="button">Delete Student</a>
+            </div>
+            <a href="#!/students" style="display: block;margin-top:1rem;">Go back</a>
+        </div>
+    </div>
+</div>

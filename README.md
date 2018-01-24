@@ -26,7 +26,7 @@ Install the node modules
 npm install
 ```
 
-Start the Node.js server using the globally installed nodemon module
+Run the Node.js server using the globally installed nodemon module
 
 ```
 npm install -g nodemon

@@ -1,0 +1,13 @@
+<div class="row" ng-init="getStudents()">
+    <h3 style="width:100%;">Students</h3>
+    <div ng-repeat="student in students">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ student.first_name }} {{ student.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{student._id}}</h6>
+                <p class="card-text">{{student.create_date | date:'medium'}}</p>
+                <a href="#!/students/details/{{student._id}}" class="card-link">details</a>
+            </div>
+        </div>
+    </div>
+</div>
