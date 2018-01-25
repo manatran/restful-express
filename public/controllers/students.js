@@ -61,4 +61,4 @@ myApp.controller('StudentsController', ["$scope", "$http", "$location", "$routeP
             console.log(error);
         });
     }
-}])
+}]);
